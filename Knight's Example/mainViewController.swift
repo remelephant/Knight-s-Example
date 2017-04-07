@@ -17,6 +17,7 @@ class mainViewController: UIViewController {
     var arrayOf = [Int: UITapGestureRecognizer]()
     var myDict = [Int: UIView]()
     var someBool: Bool = false
+    var number = 0
     
     
     func addButton(y: CGFloat, text: String) -> UIButton {
@@ -59,26 +60,32 @@ class mainViewController: UIViewController {
             }
         }
         
+        if support.example == .Win {
+            print("winner 2")
+        }
         
         
         if someNum != nil {
-        
         switch support.example {
         case .Lose:
             lose()
             print("Lose")
         case .Win:
-            print("Win")
+            lose()
+            print("Winner")
         case .Normal:
+            if number > 0 {
+                support.example = .Demo
+                fallthrough
+            }
             support.printPossiableSteps(dict: myDict, position: someNum!, inDemoMode: false)
+            
             print("Normal")
         case .Demo:
             support.printPossiableSteps(dict: myDict, position: someNum!, inDemoMode: true)
-            print("Demo")
-            
             }
         }
-        print("out of switch")
+        
     }
     
     func lose() {
@@ -92,6 +99,7 @@ class mainViewController: UIViewController {
     }
     
     func start(sender: UIButton) {
+        number = 0
         clear()
         support.example = .Normal
     }
@@ -103,6 +111,7 @@ class mainViewController: UIViewController {
         someNum = nil
         someBool = false
         self.view.subviews.forEach({ $0.removeFromSuperview() })
+        someNum = nil
         self.viewDidLoad()
     }
     
@@ -117,19 +126,26 @@ class mainViewController: UIViewController {
         }
     }
     
+    func winOrLose() {
+        if support.previousPositions.count == 20 {
+            support.example = .Win
+            print("I win")
+            super.viewDidLoad()
+        }
+    }
+    
+    
     func demoMode() {
         
-//        if support.example == .Demo {
-//            clear()
-//        } else {
-//            clear()
-//            support.example = .Demo
-//            self.viewDidLoad()
-//        }
-        
+        if support.example == .Demo {
+            support.example = .Normal
+            print("up")
+        } else {
+            support.example = .Demo
+            print("down")
+        }
+        number += 1
         clear()
-        support.example = .Demo
-        self.viewDidLoad()
     }
     
     override var shouldAutorotate: Bool {

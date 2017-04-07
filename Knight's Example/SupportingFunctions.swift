@@ -106,58 +106,44 @@ class Support {
     
     func printPossiableSteps(dict: [Int: UIView], position: Int, inDemoMode: Bool) {
         
-        print("I am in the main")
-        
-        stepCount = 0
-        
         player?.prepareToPlay()
     
-        if inDemoMode {
-            
-            if rightView != nil && dict[position] != rightView {
-                //            playSound()
-            } else {
+        if inDemoMode && example == .Demo {
+        
+                print("in demo mode")
                 previousPositions.append(position)
+                
                 let workArray = findSteps(position: position)
                 
                 if previousPositions.count < 2 {
                     dict[position]?.addSubview(addKnightToPosition(view: dict[position]!, number: "\(previousPositions.count)"))
                 }
                 
+                let bestPosition = findTheSmallestCount(array: workArray)
+                rightView = dict[bestPosition]
+                dict[bestPosition]?.addSubview(addKnightToPosition(view: dict[bestPosition]!, number: "\(previousPositions.count + 1)"))
                 
-                
-                if example == .Demo && position != 0 {
-                    
-                    print("I am in the demo, example is: ", example)
-                    
-                    let bestPosition = findTheSmallestCount(array: workArray)
-                    rightView = dict[bestPosition]
-                    dict[bestPosition]?.addSubview(addKnightToPosition(view: dict[bestPosition]!, number: "\(previousPositions.count + 1)"))
-                    
-                    _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: { (timer) in
-                        self.printPossiableSteps(dict: dict, position: bestPosition, inDemoMode: inDemoMode)
-                    })
-                    
-                    stepCount += 1
-                    print("stepCount is: ", stepCount)
-                    
-                }
-                
-            }
+                _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: false, block: { (timer) in
+                    self.printPossiableSteps(dict: dict, position: bestPosition, inDemoMode: inDemoMode)
+                })
+            
         } else {
             
             let workArray = findSteps(position: position)
             
+            
+            
             if workArray.isEmpty {
                 example = .Lose
                 print("Game over")
+                return
             }
             
-            if check.isEmpty {
+            if check.isEmpty && !inDemoMode {
                 previousPositions.append(position)
                 check = workArray
                 dict[position]?.addSubview(addKnightToPosition(view: dict[position]!, number: "\(previousPositions.count)"))
-                
+                print("i am in else")
             } else {
                 if check.contains(position) {
                     previousPositions.append(position)
@@ -166,6 +152,12 @@ class Support {
                 }
 
             }
+        }
+        
+        if previousPositions.count == 60 {
+            example = .Win
+            print("I win")
+            exit(0)
         }
         
         print("PP.count: ", previousPositions.count)
