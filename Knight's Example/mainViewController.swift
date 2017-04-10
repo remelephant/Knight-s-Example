@@ -12,13 +12,15 @@ import AVFoundation
 class mainViewController: UIViewController {
     
     let board = Board()
-    var someNum: Int?
+    var someNum: Int = 0
     let support = Support()
     var arrayOf = [Int: UITapGestureRecognizer]()
     var myDict = [Int: UIView]()
     var someBool: Bool = false
-    var number = 0
-    
+    var number: Bool = true
+    var stepIndex = 0
+    var timer = Timer()
+
     
     func addButton(y: CGFloat, text: String) -> UIButton {
         let button = UIButton(type: UIButtonType.roundedRect)
@@ -60,37 +62,84 @@ class mainViewController: UIViewController {
             }
         }
         
-        if support.example == .Win {
-            print("winner 2")
-        }
-        
-        
-        if someNum != nil {
-        switch support.example {
-        case .Lose:
-            lose()
-            print("Lose")
-        case .Win:
-            lose()
-            print("Winner")
-        case .Normal:
-            if number > 0 {
-                support.example = .Demo
-                fallthrough
-            }
-            support.printPossiableSteps(dict: myDict, position: someNum!, inDemoMode: false)
+        if someNum != 0 {
             
-            print("Normal")
-        case .Demo:
-            support.printPossiableSteps(dict: myDict, position: someNum!, inDemoMode: true)
+            switch support.example {
+                
+            case .Lose:
+                lose()
+            case .Win:
+                win()
+            case .Normal:
+                
+                
+                if !number {
+                    support.example = .Demo
+                    fallthrough
+                }
+                
+                let a = support.addKnight(dict: myDict, position: someNum)
+                if a != nil {
+                    addSubviewToView(position: a!)
+                }
+                
+                if support.example == .Lose {
+                    lose()
+                }
+                
+                
+            case .Demo:
+            
+                addSubviewToView(position: support.addKnight(dict: myDict, position: someNum)!)
+                
+                timer = Timer.scheduledTimer(timeInterval: 0.01,
+                                                       target: self,
+                                                       selector: #selector(self.myTimer),
+                                                       userInfo: nil,
+                                                       repeats: true)
+                
             }
         }
-        
     }
     
-    func lose() {
-        let alertController = UIAlertController(title: "Game over", message:
-            "Hello, world!", preferredStyle: UIAlertControllerStyle.alert)
+    
+    /// Functions
+    
+    
+    
+    func myTimer() {
+        if someNum != 0 {
+            someBool = true
+            stepIndex += 1
+            let bestPosition = support.findTheSmallestCount(position: someNum)
+            
+            let a = support.addKnight(dict: myDict, position: bestPosition)
+            
+            if a != nil {
+                addSubviewToView(position: a!)
+            }
+            
+            
+            
+            someNum = bestPosition
+            
+            if stepIndex == 63 {
+                timer.invalidate()
+                stepIndex = 0
+                win()
+                return
+            }
+            
+
+            
+        }
+    }
+    
+    /// Work area
+    
+    func win() {
+        let alertController = UIAlertController(title: "You win", message:
+            "Try one more time", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Start again", style: UIAlertActionStyle.default, handler: { (action) in
             self.clear()
             self.support.example = .Normal
@@ -98,54 +147,77 @@ class mainViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func lose() {
+        let alertController = UIAlertController(title: "Game over", message:
+            "Try again", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Start again", style: UIAlertActionStyle.default, handler: { (action) in
+            self.clear()
+            self.support.example = .Normal
+        }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func addSubviewToView(position: (UIView, Int)) {
+        
+        let view: UIView = position.0
+        let number: Int = position.1
+        
+        let toString = String(number)
+        view.addSubview(support.addKnightToPosition(view: view, number: toString))
+    }
+    
     func start(sender: UIButton) {
-        number = 0
         clear()
+        number = true
         support.example = .Normal
+        self.viewDidLoad()
     }
     
     func clear() {
         myDict = [:]
         arrayOf = [:]
         support.clear()
-        someNum = nil
         someBool = false
         self.view.subviews.forEach({ $0.removeFromSuperview() })
-        someNum = nil
+        someNum = 0
+        number = true
+        stepIndex = 0
+        timer.invalidate()
         self.viewDidLoad()
     }
     
     func recognize(t: UITapGestureRecognizer) {
         
-        if let index = arrayOf.values.index(of: t) {
-            let key = arrayOf.keys[index]
-            someNum = key
-            self.viewDidLoad()
-        } else {
-            print("Error")
+        if !someBool {
+            if let i = arrayOf.values.index(of: t) {
+                let key = arrayOf.keys[i]
+                someNum = key
+                self.viewDidLoad()
+            } else {
+                print("Error")
+            }
         }
     }
     
-    func winOrLose() {
-        if support.previousPositions.count == 20 {
-            support.example = .Win
-            print("I win")
-            super.viewDidLoad()
-        }
-    }
-    
+//    func winOrLose() {
+//        if support.previousPositions.count == 20 {
+//            support.example = .Win
+//            super.viewDidLoad()
+//        }
+//    }
+//    
     
     func demoMode() {
         
         if support.example == .Demo {
             support.example = .Normal
-            print("up")
         } else {
             support.example = .Demo
-            print("down")
         }
-        number += 1
         clear()
+        number = false
+        super.viewDidLoad()
     }
     
     override var shouldAutorotate: Bool {

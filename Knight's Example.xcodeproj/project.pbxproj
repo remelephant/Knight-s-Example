@@ -62,7 +62,6 @@
 			children = (
 				8313CF311E8B3A8D00151641 /* Support */,
 				8313CF211E8B3A7600151641 /* mainViewController.swift */,
-				8313CF341E8C6C5000151641 /* Board.swift */,
 				831C3ECE1E8DD3550082F2F6 /* SupportingFunctions.swift */,
 			);
 			path = "Knight's Example";
@@ -71,6 +70,7 @@
 		8313CF311E8B3A8D00151641 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				8313CF341E8C6C5000151641 /* Board.swift */,
 				8313CF231E8B3A7600151641 /* Main.storyboard */,
 				8322F15B1E969EB8002DB0F3 /* Assets.xcassets */,
 				8322F15D1E96A058002DB0F3 /* wrong.mp3 */,

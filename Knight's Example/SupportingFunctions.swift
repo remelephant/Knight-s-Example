@@ -49,34 +49,20 @@ class Support {
         }
     }
         
-    func findTheSmallestCount(array: [Int]) -> Int {
-        var arrayOfArrays = [[Int]]()
-        
-        
-        var arrayTemp = [Int]()
-        
-        for i in 0..<previousPositions.count {
-            for j in 0..<array.count {
-                if previousPositions[i] != array[j] {
-                    arrayTemp.append(array[j])
-                }
-            }
-        }
-
-        for i in 0..<arrayTemp.count {
-            arrayOfArrays.append(findSteps(position: arrayTemp[i]))
+    func findTheSmallestCount(position: Int) -> Int {
+        if previousPositions.count == 0 {
+            return position
         }
         
-        var temp = arrayOfArrays[0].count
-        var index = 0
-        for i in 0..<arrayOfArrays.count {
-            if arrayOfArrays[i].count < temp && arrayOfArrays[i].count != 0 {
-                temp = arrayOfArrays[i].count
-                index = i
-            }
+        let array = findSteps(position: position)
+        var temp = [Int]()
+        for i in array {
+            temp.append(findSteps(position: i).count)
         }
-
-        return array[index]
+        
+        let index = temp.index(of: temp.min()!)
+        
+        return array[index!]
     }
     
     func addKnightToPosition(view: UIView, number: String) -> UIImageView {
@@ -104,70 +90,39 @@ class Support {
     var rightView: UIView? = nil
     var check = [Int]()
     
-    func printPossiableSteps(dict: [Int: UIView], position: Int, inDemoMode: Bool) {
+    func addKnight(dict: [Int: UIView], position: Int) -> (UIView, Int)? {
         
-        player?.prepareToPlay()
-    
-        if inDemoMode && example == .Demo {
+        if findSteps(position: position).count == 0 && previousPositions.count == 63 {
+                print("64")
+                return(dict[position], position) as? (UIView, Int)
+        }
         
-                print("in demo mode")
-                previousPositions.append(position)
-                
-                let workArray = findSteps(position: position)
-                
-                if previousPositions.count < 2 {
-                    dict[position]?.addSubview(addKnightToPosition(view: dict[position]!, number: "\(previousPositions.count)"))
-                }
-                
-                let bestPosition = findTheSmallestCount(array: workArray)
-                rightView = dict[bestPosition]
-                dict[bestPosition]?.addSubview(addKnightToPosition(view: dict[bestPosition]!, number: "\(previousPositions.count + 1)"))
-                
-                _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: false, block: { (timer) in
-                    self.printPossiableSteps(dict: dict, position: bestPosition, inDemoMode: inDemoMode)
-                })
-            
+        if previousPositions.count < 1 {
+            previousPositions.append(position)
+            return(dict[position]!, previousPositions.count)
         } else {
-            
-            let workArray = findSteps(position: position)
-            
-            
-            
-            if workArray.isEmpty {
-                example = .Lose
-                print("Game over")
-                return
-            }
-            
-            if check.isEmpty && !inDemoMode {
+            check = findSteps(position: previousPositions[previousPositions.count - 1])
+            if check.contains(position) {
                 previousPositions.append(position)
-                check = workArray
-                dict[position]?.addSubview(addKnightToPosition(view: dict[position]!, number: "\(previousPositions.count)"))
-                print("i am in else")
+                return(dict[position]!, previousPositions.count)
             } else {
-                if check.contains(position) {
-                    previousPositions.append(position)
-                    dict[position]?.addSubview(addKnightToPosition(view: dict[position]!, number: "\(previousPositions.count)"))
-                    check = workArray
-                }
-
+                return nil
             }
         }
-        
-        if previousPositions.count == 60 {
-            example = .Win
-            print("I win")
-            exit(0)
-        }
-        
-        print("PP.count: ", previousPositions.count)
-        
     }
     
     func clear() {
         previousPositions = []
         rightView = nil
         check = []
+    }
+    
+    func addSubviewToView(position: (UIView, Int)) {
+        let view: UIView = position.0
+        let number: Int = position.1
+        
+        let toString = String(number)
+        view.addSubview(addKnightToPosition(view: view, number: toString))
     }
     
     private func  findSteps(position: Int) -> [Int] {
