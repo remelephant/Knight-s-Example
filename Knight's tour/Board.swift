@@ -1,6 +1,6 @@
 //
 //  Board.swift
-//  Knight's Example
+//  Knight's tour
 //
 //  Created by Vahagn Gevorgyan on 3/30/17.
 //  Copyright © 2017 Vahagn Gevorgyan. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Knight's Example
+//  Knight's tour
 //
 //  Created by Vahagn Gevorgyan on 3/29/17.
 //  Copyright © 2017 Vahagn Gevorgyan. All rights reserved.

@@ -14,17 +14,19 @@
 		831B16631F898523002463D7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 831B165F1F898523002463D7 /* Info.plist */; };
 		831B16641F898523002463D7 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831B16601F898523002463D7 /* mainViewController.swift */; };
 		831B16651F898523002463D7 /* SupportingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831B16611F898523002463D7 /* SupportingFunctions.swift */; };
+		831B166D1F898770002463D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831B166C1F898770002463D7 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8313CF1C1E8B3A7600151641 /* Knight's tour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Knight's tour.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		831B16491F8980DE002463D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "/Users/vahagngevorgyan/Documents/Knight's tour/Knight's tour/AppDelegate.swift"; sourceTree = "<absolute>"; };
 		831B164A1F8980DE002463D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Knight's tour/Assets.xcassets"; sourceTree = "<group>"; };
-		831B16541F8980DE002463D7 /* Wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Wrong.mp3; path = "../Knight's tour/Wrong.mp3"; sourceTree = "<group>"; };
+		831B16541F8980DE002463D7 /* Wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Wrong.mp3; path = "Knight's tour/Wrong.mp3"; sourceTree = "<group>"; };
 		831B165E1F898523002463D7 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Board.swift; path = "Knight's tour/Board.swift"; sourceTree = SOURCE_ROOT; };
 		831B165F1F898523002463D7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Knight's tour/Info.plist"; sourceTree = SOURCE_ROOT; };
 		831B16601F898523002463D7 /* mainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mainViewController.swift; path = "Knight's tour/mainViewController.swift"; sourceTree = SOURCE_ROOT; };
 		831B16611F898523002463D7 /* SupportingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportingFunctions.swift; path = "Knight's tour/SupportingFunctions.swift"; sourceTree = SOURCE_ROOT; };
+		831B166C1F898770002463D7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +43,9 @@
 		8313CF131E8B3A7600151641 = {
 			isa = PBXGroup;
 			children = (
+				831B166C1F898770002463D7 /* Main.storyboard */,
 				8313CF1E1E8B3A7600151641 /* Knight's tour */,
+				831B166E1F8987BB002463D7 /* Supporting */,
 				8313CF1D1E8B3A7600151641 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,24 +62,22 @@
 			isa = PBXGroup;
 			children = (
 				831B16491F8980DE002463D7 /* AppDelegate.swift */,
-				831B164A1F8980DE002463D7 /* Assets.xcassets */,
-				831B164B1F8980DE002463D7 /* Base.lproj */,
-				831B16541F8980DE002463D7 /* Wrong.mp3 */,
+				831B165E1F898523002463D7 /* Board.swift */,
+				831B16601F898523002463D7 /* mainViewController.swift */,
+				831B16611F898523002463D7 /* SupportingFunctions.swift */,
 			);
 			name = "Knight's tour";
 			path = "Knight's Example";
 			sourceTree = "<group>";
 		};
-		831B164B1F8980DE002463D7 /* Base.lproj */ = {
+		831B166E1F8987BB002463D7 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
-				831B165E1F898523002463D7 /* Board.swift */,
 				831B165F1F898523002463D7 /* Info.plist */,
-				831B16601F898523002463D7 /* mainViewController.swift */,
-				831B16611F898523002463D7 /* SupportingFunctions.swift */,
+				831B164A1F8980DE002463D7 /* Assets.xcassets */,
+				831B16541F8980DE002463D7 /* Wrong.mp3 */,
 			);
-			name = Base.lproj;
-			path = "../Knight's tour/Base.lproj";
+			name = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +144,7 @@
 				831B16631F898523002463D7 /* Info.plist in Resources */,
 				831B165D1F8980DE002463D7 /* Wrong.mp3 in Resources */,
 				831B16561F8980DE002463D7 /* Assets.xcassets in Resources */,
+				831B166D1F898770002463D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
