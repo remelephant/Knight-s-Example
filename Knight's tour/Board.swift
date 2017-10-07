@@ -52,7 +52,7 @@ class Board {
     
     var dictionaryOfViews = [Int:UIView]()
     
-    var tap = UITapGestureRecognizer(target: mainViewController.self, action: #selector(tapOnTheView))
+    var tap = UITapGestureRecognizer(target: ChessBoardViewController.self, action: #selector(tapOnTheView))
     
 
     var theDarker = UIColor(red: 198/255, green: 212/255, blue: 186/255, alpha: 1)

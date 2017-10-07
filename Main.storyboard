@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Chess Board View Controller-->
         <scene sceneID="MeD-Kc-dWB">
             <objects>
-                <viewController id="eaJ-h2-A44" customClass="mainViewController" customModule="Knight_s_tour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eaJ-h2-A44" customClass="ChessBoardViewController" customModule="Knight_s_tour" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Evy-4s-MCx"/>
                         <viewControllerLayoutGuide type="bottom" id="hUG-KK-fKs"/>
