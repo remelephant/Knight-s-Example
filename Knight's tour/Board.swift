@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Board: UIViewController {
+class Board {
 
     var size = 8
     
@@ -84,7 +84,7 @@ class Board: UIViewController {
         return dictionaryOfViews
     }
     
-    func tapOnTheView(t:UITapGestureRecognizer) {
+    @objc func tapOnTheView(t:UITapGestureRecognizer) {
         print("Hello")
     }
 }
