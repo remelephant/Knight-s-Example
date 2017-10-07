@@ -14,7 +14,7 @@
 		8313CF351E8C6C5000151641 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313CF341E8C6C5000151641 /* Board.swift */; };
 		831C3ECF1E8DD3550082F2F6 /* SupportingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C3ECE1E8DD3550082F2F6 /* SupportingFunctions.swift */; };
 		8322F15C1E969EB8002DB0F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8322F15B1E969EB8002DB0F3 /* Assets.xcassets */; };
-		8322F15E1E96A058002DB0F3 /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8322F15D1E96A058002DB0F3 /* wrong.mp3 */; };
+		83D9BA961F89768A002150E0 /* Wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 83D9BA951F89768A002150E0 /* Wrong.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		8313CF341E8C6C5000151641 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		831C3ECE1E8DD3550082F2F6 /* SupportingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportingFunctions.swift; sourceTree = "<group>"; };
 		8322F15B1E969EB8002DB0F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8322F15D1E96A058002DB0F3 /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = wrong.mp3; path = "../../../../Downloads/Wrong-answer-sound-effect/wrong.mp3"; sourceTree = "<group>"; };
+		83D9BA951F89768A002150E0 /* Wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Wrong.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 				8313CF341E8C6C5000151641 /* Board.swift */,
 				8313CF231E8B3A7600151641 /* Main.storyboard */,
 				8322F15B1E969EB8002DB0F3 /* Assets.xcassets */,
-				8322F15D1E96A058002DB0F3 /* wrong.mp3 */,
+				83D9BA951F89768A002150E0 /* Wrong.mp3 */,
 				8313CF1F1E8B3A7600151641 /* AppDelegate.swift */,
 				8313CF281E8B3A7600151641 /* LaunchScreen.storyboard */,
 				8313CF2B1E8B3A7600151641 /* Info.plist */,
@@ -142,7 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8313CF2A1E8B3A7600151641 /* LaunchScreen.storyboard in Resources */,
-				8322F15E1E96A058002DB0F3 /* wrong.mp3 in Resources */,
+				83D9BA961F89768A002150E0 /* Wrong.mp3 in Resources */,
 				8322F15C1E969EB8002DB0F3 /* Assets.xcassets in Resources */,
 				8313CF251E8B3A7600151641 /* Main.storyboard in Resources */,
 			);
