@@ -9,26 +9,22 @@
 /* Begin PBXBuildFile section */
 		831B16551F8980DE002463D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831B16491F8980DE002463D7 /* AppDelegate.swift */; };
 		831B16561F8980DE002463D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831B164A1F8980DE002463D7 /* Assets.xcassets */; };
-		831B16571F8980DE002463D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831B164C1F8980DE002463D7 /* LaunchScreen.storyboard */; };
-		831B16581F8980DE002463D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831B164E1F8980DE002463D7 /* Main.storyboard */; };
-		831B16591F8980DE002463D7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831B16501F8980DE002463D7 /* Board.swift */; };
-		831B165A1F8980DE002463D7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 831B16511F8980DE002463D7 /* Info.plist */; };
-		831B165B1F8980DE002463D7 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831B16521F8980DE002463D7 /* mainViewController.swift */; };
-		831B165C1F8980DE002463D7 /* SupportingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831B16531F8980DE002463D7 /* SupportingFunctions.swift */; };
 		831B165D1F8980DE002463D7 /* Wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 831B16541F8980DE002463D7 /* Wrong.mp3 */; };
+		831B16621F898523002463D7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831B165E1F898523002463D7 /* Board.swift */; };
+		831B16631F898523002463D7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 831B165F1F898523002463D7 /* Info.plist */; };
+		831B16641F898523002463D7 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831B16601F898523002463D7 /* mainViewController.swift */; };
+		831B16651F898523002463D7 /* SupportingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831B16611F898523002463D7 /* SupportingFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8313CF1C1E8B3A7600151641 /* Knight's tour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Knight's tour.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		831B16491F8980DE002463D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../Knight's tour/AppDelegate.swift"; sourceTree = "<group>"; };
-		831B164A1F8980DE002463D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../Knight's tour/Assets.xcassets"; sourceTree = "<group>"; };
-		831B164D1F8980DE002463D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		831B164F1F8980DE002463D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
-		831B16501F8980DE002463D7 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Board.swift; path = "../Knight's tour/Board.swift"; sourceTree = "<group>"; };
-		831B16511F8980DE002463D7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Knight's tour/Info.plist"; sourceTree = "<group>"; };
-		831B16521F8980DE002463D7 /* mainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mainViewController.swift; path = "../Knight's tour/mainViewController.swift"; sourceTree = "<group>"; };
-		831B16531F8980DE002463D7 /* SupportingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportingFunctions.swift; path = "../Knight's tour/SupportingFunctions.swift"; sourceTree = "<group>"; };
+		831B16491F8980DE002463D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "/Users/vahagngevorgyan/Documents/Knight's tour/Knight's tour/AppDelegate.swift"; sourceTree = "<absolute>"; };
+		831B164A1F8980DE002463D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Knight's tour/Assets.xcassets"; sourceTree = "<group>"; };
 		831B16541F8980DE002463D7 /* Wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Wrong.mp3; path = "../Knight's tour/Wrong.mp3"; sourceTree = "<group>"; };
+		831B165E1F898523002463D7 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Board.swift; path = "Knight's tour/Board.swift"; sourceTree = SOURCE_ROOT; };
+		831B165F1F898523002463D7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Knight's tour/Info.plist"; sourceTree = SOURCE_ROOT; };
+		831B16601F898523002463D7 /* mainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mainViewController.swift; path = "Knight's tour/mainViewController.swift"; sourceTree = SOURCE_ROOT; };
+		831B16611F898523002463D7 /* SupportingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportingFunctions.swift; path = "Knight's tour/SupportingFunctions.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +60,6 @@
 				831B16491F8980DE002463D7 /* AppDelegate.swift */,
 				831B164A1F8980DE002463D7 /* Assets.xcassets */,
 				831B164B1F8980DE002463D7 /* Base.lproj */,
-				831B16501F8980DE002463D7 /* Board.swift */,
-				831B16511F8980DE002463D7 /* Info.plist */,
-				831B16521F8980DE002463D7 /* mainViewController.swift */,
-				831B16531F8980DE002463D7 /* SupportingFunctions.swift */,
 				831B16541F8980DE002463D7 /* Wrong.mp3 */,
 			);
 			name = "Knight's tour";
@@ -77,8 +69,10 @@
 		831B164B1F8980DE002463D7 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				831B164C1F8980DE002463D7 /* LaunchScreen.storyboard */,
-				831B164E1F8980DE002463D7 /* Main.storyboard */,
+				831B165E1F898523002463D7 /* Board.swift */,
+				831B165F1F898523002463D7 /* Info.plist */,
+				831B16601F898523002463D7 /* mainViewController.swift */,
+				831B16611F898523002463D7 /* SupportingFunctions.swift */,
 			);
 			name = Base.lproj;
 			path = "../Knight's tour/Base.lproj";
@@ -145,11 +139,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				831B165A1F8980DE002463D7 /* Info.plist in Resources */,
-				831B16581F8980DE002463D7 /* Main.storyboard in Resources */,
+				831B16631F898523002463D7 /* Info.plist in Resources */,
 				831B165D1F8980DE002463D7 /* Wrong.mp3 in Resources */,
 				831B16561F8980DE002463D7 /* Assets.xcassets in Resources */,
-				831B16571F8980DE002463D7 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,33 +152,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				831B165C1F8980DE002463D7 /* SupportingFunctions.swift in Sources */,
-				831B16591F8980DE002463D7 /* Board.swift in Sources */,
+				831B16621F898523002463D7 /* Board.swift in Sources */,
 				831B16551F8980DE002463D7 /* AppDelegate.swift in Sources */,
-				831B165B1F8980DE002463D7 /* mainViewController.swift in Sources */,
+				831B16641F898523002463D7 /* mainViewController.swift in Sources */,
+				831B16651F898523002463D7 /* SupportingFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		831B164C1F8980DE002463D7 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				831B164D1F8980DE002463D7 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		831B164E1F8980DE002463D7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				831B164F1F8980DE002463D7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8313CF2C1E8B3A7600151641 /* Debug */ = {
@@ -285,7 +258,7 @@
 		8313CF2F1E8B3A7600151641 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 24EK95JY3D;
 				INFOPLIST_FILE = "Knight's tour/Info.plist";
@@ -300,7 +273,7 @@
 		8313CF301E8B3A7600151641 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 24EK95JY3D;
 				INFOPLIST_FILE = "Knight's tour/Info.plist";
