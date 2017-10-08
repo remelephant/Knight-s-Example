@@ -65,24 +65,20 @@ class LogicFunctions {
         return array[index!]
     }
     
-    func addKnightToPosition(view: UIView, number: String) -> UIImageView {
+    func addKnightToSquareView(view: UIView, step: Int) -> UIImageView {
+
+        let knightImageView = UIImageView(image: UIImage(named: "knight.5"))
         
-        let imageName = "knight.5"
-        let image = UIImage(named: imageName)
-        
-        let imageView = UIImageView(image: image!)
-        
-        imageView.frame = CGRect(x: 0, y: 0, width: (view.frame.width) , height: (view.frame.height))
-        
+        knightImageView.frame = CGRect(x: 0, y: 0, width: (view.frame.width) , height: (view.frame.height))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: (view.frame.width/2) , height: (view.frame.height/2)))
         
         label.center = CGPoint(x: view.frame.width * 0.75, y: view.frame.height * 0.75)
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = numberColor
-        label.text = "\(number)"
-        imageView.addSubview(label)
-        return imageView
+        label.text = "\(step)"
+        knightImageView.addSubview(label)
+        return knightImageView
     }
     
     var previousPositions = [Int]()
@@ -117,11 +113,11 @@ class LogicFunctions {
     }
     
     func addSubviewToView(position: (UIView, Int)) {
-        let view: UIView = position.0
-        let number: Int = position.1
-        
-        let toString = String(number)
-        view.addSubview(addKnightToPosition(view: view, number: toString))
+//        let view: UIView = position.0
+//        let number: Int = position.1
+//        
+//        let toString = String(number)
+////        view.addSubview(addKnightToPosition(view: view, number: toString))
     }
     
     private func  findSteps(position: Int) -> [Int] {

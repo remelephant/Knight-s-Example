@@ -11,20 +11,31 @@ import AVFoundation
 
 class ChessBoardViewController: UIViewController {
     
-    let board = Board()
+    // not refactored properties
     var someNum: Int = 0
-    let gameLogic = LogicFunctions()
-
-    var boardSquareIndexesAndViews = [Int: UIView]()
     var someBool: Bool = false
     var number: Bool = true
     var stepIndex = 0
     var timer = Timer()
     
+    // refactored properties
+    let gameLogic = LogicFunctions()
+    let board = Board()
+    var boardSquareIndexesAndViews = [Int: UIView]()
+    
+    
+    
+    
     @IBAction func startAgainButtonPressed(_ sender: Any) {
-        clear()
-        number = true
-        gameLogic.example = .Normal
+        for item in boardSquareIndexesAndViews {
+            if item.value.subviews.count != 0 {
+                for view in item.value.subviews {
+                    view.removeFromSuperview()
+                }
+            }
+        }
+        
+        gameLogic.clear()
     }
     
     @IBAction func demoButtonPressed(_ sender: Any) {
@@ -71,7 +82,7 @@ class ChessBoardViewController: UIViewController {
                 
                 let a = gameLogic.addKnight(dict: boardSquareIndexesAndViews, position: someNum)
                 if a != nil {
-                    addSubviewToView(position: a!)
+//                    addSubviewToView(position: a!)
                 }
                 
                 if gameLogic.example == .Lose {
@@ -81,7 +92,7 @@ class ChessBoardViewController: UIViewController {
                 
             case .Demo:
                 
-                addSubviewToView(position: gameLogic.addKnight(dict: boardSquareIndexesAndViews, position: someNum)!)
+//                addSubviewToView(position: gameLogic.addKnight(dict: boardSquareIndexesAndViews, position: someNum)!)
                 
                 timer = Timer.scheduledTimer(timeInterval: 0.01,
                                              target: self,
@@ -111,7 +122,7 @@ class ChessBoardViewController: UIViewController {
             let a = gameLogic.addKnight(dict: boardSquareIndexesAndViews, position: bestPosition)
             
             if a != nil {
-                addSubviewToView(position: a!)
+//                addSubviewToView(position: a!)
             }
             
             
@@ -148,14 +159,14 @@ class ChessBoardViewController: UIViewController {
     }
     
     
-    func addSubviewToView(position: (UIView, Int)) {
-        
-        let view: UIView = position.0
-        let number: Int = position.1
-        
-        let toString = String(number)
-        view.addSubview(gameLogic.addKnightToPosition(view: view, number: toString))
-    }
+//    func addSubviewToView(position: (view: UIView, stepNumber: Int)) {
+//        
+//        let view: UIView = position.0
+//        let number: Int = position.1
+//        
+//        let toString = String(number)
+//        view.addSubview(gameLogic.addKnightToPosition(view: view, number: toString))
+//    }
     
     func clear() {
         boardSquareIndexesAndViews = [:]
@@ -171,7 +182,7 @@ class ChessBoardViewController: UIViewController {
     func boardSquareTapped(sender: UITapGestureRecognizer) {
         if let view = sender.view {
             if let knight = gameLogic.addKnight(dict: boardSquareIndexesAndViews, position: view.tag) {
-                addSubviewToView(position: (knight))
+                view.addSubview(gameLogic.addKnightToSquareView(view: knight.0, step: knight.1))
             }
         }
     }
