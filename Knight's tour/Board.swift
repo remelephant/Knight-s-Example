@@ -10,16 +10,16 @@ import UIKit
 
 class Board {
 
-    var size = 8
+    var boardSize = 8
     
     private var rectSize: CGSize {
         get{
             if UIScreen.main.bounds.width <= UIScreen.main.bounds.height {
-                return CGSize(width: UIScreen.main.bounds.width/CGFloat(size),
-                              height: UIScreen.main.bounds.width/CGFloat(size))
+                return CGSize(width: UIScreen.main.bounds.width/CGFloat(boardSize),
+                              height: UIScreen.main.bounds.width/CGFloat(boardSize))
             } else {
-                return CGSize(width: UIScreen.main.bounds.height/CGFloat(size),
-                              height: UIScreen.main.bounds.height/CGFloat(size))
+                return CGSize(width: UIScreen.main.bounds.height/CGFloat(boardSize),
+                              height: UIScreen.main.bounds.height/CGFloat(boardSize))
             }
         }
     }
@@ -27,9 +27,9 @@ class Board {
     private var rectFloat: CGFloat  {
         get{
             if UIScreen.main.bounds.width <= UIScreen.main.bounds.height {
-                return CGFloat(UIScreen.main.bounds.width/CGFloat(size))
+                return CGFloat(UIScreen.main.bounds.width/CGFloat(boardSize))
             } else {
-                return CGFloat(UIScreen.main.bounds.width/CGFloat(size))
+                return CGFloat(UIScreen.main.bounds.width/CGFloat(boardSize))
             }
         }
     }
@@ -46,7 +46,7 @@ class Board {
         }
     }
     
-    func intForDict(first: Int, second: Int) -> Int {
+    func boardScuareIndex(first: Int, second: Int) -> Int {
         return first * 10 + second
     }
     
@@ -62,11 +62,11 @@ class Board {
     func createSquares() -> [Int:UIView] {
         
         var theColorBool = true
-        for i in 1...size {
-            if size % 2 == 0 {
+        for i in 1...boardSize {
+            if boardSize % 2 == 0 {
                 theColorBool = !theColorBool
             }
-            for j in 1...size {
+            for j in 1...boardSize {
                 let point: CGPoint = CGPoint(x: (CGFloat(j - 1) * rectFloat),
                                              y: (CGFloat(i - 1) * rectFloat) + startPoint)
                 let newView = UIView(frame: CGRect(origin: point, size: rectSize))
@@ -77,7 +77,7 @@ class Board {
                 }
                 theColorBool = !theColorBool
                 
-                let number = intForDict(first: i, second: j)
+                let number = boardScuareIndex(first: i, second: j)
                 dictionaryOfViews[number] = newView
             }
         }

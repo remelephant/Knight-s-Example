@@ -20,12 +20,34 @@
                     <view key="view" contentMode="scaleToFill" id="j6M-IX-v4w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFa-21-Lgu">
+                                <rect key="frame" x="150" y="28" width="75" height="30"/>
+                                <state key="normal" title="Start again"/>
+                                <connections>
+                                    <action selector="startAgainButtonPressed:" destination="eaJ-h2-A44" eventType="touchUpInside" id="28B-i0-Lru"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dys-hU-fXP">
+                                <rect key="frame" x="167" y="66" width="41" height="30"/>
+                                <state key="normal" title="Demo"/>
+                                <connections>
+                                    <action selector="demoButtonPressed:" destination="eaJ-h2-A44" eventType="touchUpInside" id="Kzn-WI-lfe"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DFa-21-Lgu" firstAttribute="top" secondItem="Evy-4s-MCx" secondAttribute="bottom" constant="8" id="UFA-0B-6ws"/>
+                            <constraint firstItem="dys-hU-fXP" firstAttribute="centerX" secondItem="j6M-IX-v4w" secondAttribute="centerX" id="Zss-0f-HEy"/>
+                            <constraint firstItem="DFa-21-Lgu" firstAttribute="centerX" secondItem="j6M-IX-v4w" secondAttribute="centerX" id="uAG-tc-n7k"/>
+                            <constraint firstItem="dys-hU-fXP" firstAttribute="top" secondItem="DFa-21-Lgu" secondAttribute="bottom" constant="8" id="veb-Ii-U0N"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqE-Ej-OHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="489" y="253"/>
+            <point key="canvasLocation" x="212" y="236"/>
         </scene>
     </scenes>
 </document>

@@ -74,7 +74,6 @@ class LogicFunctions {
         
         imageView.frame = CGRect(x: 0, y: 0, width: (view.frame.width) , height: (view.frame.height))
         
-        
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: (view.frame.width/2) , height: (view.frame.height/2)))
         
         label.center = CGPoint(x: view.frame.width * 0.75, y: view.frame.height * 0.75)

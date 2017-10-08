@@ -62,7 +62,6 @@
 		8313CF1E1E8B3A7600151641 /* Knight's tour */ = {
 			isa = PBXGroup;
 			children = (
-				831B16491F8980DE002463D7 /* AppDelegate.swift */,
 				831B16601F898523002463D7 /* ChessBoardViewController.swift */,
 			);
 			name = "Knight's tour";
@@ -72,6 +71,7 @@
 		831B166E1F8987BB002463D7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				831B16491F8980DE002463D7 /* AppDelegate.swift */,
 				831B165F1F898523002463D7 /* Info.plist */,
 				831B164A1F8980DE002463D7 /* Assets.xcassets */,
 				831B16541F8980DE002463D7 /* Wrong.mp3 */,

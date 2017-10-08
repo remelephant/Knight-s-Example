@@ -13,14 +13,85 @@ class ChessBoardViewController: UIViewController {
     
     let board = Board()
     var someNum: Int = 0
-    let support = LogicFunctions()
-    var arrayOf = [Int: UITapGestureRecognizer]()
-    var myDict = [Int: UIView]()
+    let gameLogic = LogicFunctions()
+
+    var boardSquareIndexesAndViews = [Int: UIView]()
     var someBool: Bool = false
     var number: Bool = true
     var stepIndex = 0
     var timer = Timer()
-
+    
+    @IBAction func startAgainButtonPressed(_ sender: Any) {
+        clear()
+        number = true
+        gameLogic.example = .Normal
+    }
+    
+    @IBAction func demoButtonPressed(_ sender: Any) {
+        if gameLogic.example == .Demo {
+            gameLogic.example = .Normal
+        } else {
+            gameLogic.example = .Demo
+        }
+        clear()
+        number = false
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        board.boardSize = 8
+        boardSquareIndexesAndViews = board.createSquares()
+        
+        for row in 1...board.boardSize {
+            for column in 1...board.boardSize {
+                let index = board.boardScuareIndex(first: row, second: column)
+                if let boardSquare = boardSquareIndexesAndViews[index] {
+                    view.addSubview(boardSquare)
+                    boardSquareIndexesAndViews[index]?.tag = index
+                    let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (boardSquareTapped))
+                    boardSquareIndexesAndViews[index]?.addGestureRecognizer(gestureRecognizer)
+                }
+            }
+        }
+    }
+    
+    func reloadBoard() {
+        if someNum != 0 {
+            switch gameLogic.example {
+            case .Lose:
+                lose()
+            case .Win:
+                win()
+            case .Normal:
+                
+                if !number {
+                    gameLogic.example = .Demo
+                    fallthrough
+                }
+                
+                let a = gameLogic.addKnight(dict: boardSquareIndexesAndViews, position: someNum)
+                if a != nil {
+                    addSubviewToView(position: a!)
+                }
+                
+                if gameLogic.example == .Lose {
+                    lose()
+                }
+                
+                
+            case .Demo:
+                
+                addSubviewToView(position: gameLogic.addKnight(dict: boardSquareIndexesAndViews, position: someNum)!)
+                
+                timer = Timer.scheduledTimer(timeInterval: 0.01,
+                                             target: self,
+                                             selector: #selector(self.myTimer),
+                                             userInfo: nil,
+                                             repeats: true)
+                
+            }
+        }
+    }
     
     func addButton(y: CGFloat, text: String) -> UIButton {
         let button = UIButton(type: UIButtonType.roundedRect)
@@ -29,88 +100,15 @@ class ChessBoardViewController: UIViewController {
         return button
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        board.size = 8
-        
-        let button = addButton(y: 40, text: "Start again")
-        let demo = addButton(y: 60, text: "Demo")
-        
-        if myDict.isEmpty {
-            myDict = board.createSquares()
-            self.view.addSubview(button)
-            self.view.addSubview(demo)
-            button.addTarget(self, action: #selector (start), for: UIControlEvents.touchUpInside)
-            demo.addTarget(self, action: #selector (demoMode), for: UIControlEvents.touchUpInside)
-        }
-        
-        for i in 1...board.size {
-            for j in 1...board.size {
-                let number = board.intForDict(first: i, second: j)
-                view.addSubview(myDict[number]!)
-                myDict[number]?.tag = number
-                let gesture = UITapGestureRecognizer(target: self, action: #selector (recognize))
-                arrayOf[number] = gesture
-            }
-        }
-        
-        for i in 1...board.size {
-            for j in 1...board.size {
-                let number = board.intForDict(first: i, second: j)
-                myDict[number]?.addGestureRecognizer(arrayOf[number]!)
-            }
-        }
-        
-        if someNum != 0 {
-            
-            switch support.example {
-                
-            case .Lose:
-                lose()
-            case .Win:
-                win()
-            case .Normal:
-                
-                
-                if !number {
-                    support.example = .Demo
-                    fallthrough
-                }
-                
-                let a = support.addKnight(dict: myDict, position: someNum)
-                if a != nil {
-                    addSubviewToView(position: a!)
-                }
-                
-                if support.example == .Lose {
-                    lose()
-                }
-                
-                
-            case .Demo:
-            
-                addSubviewToView(position: support.addKnight(dict: myDict, position: someNum)!)
-                
-                timer = Timer.scheduledTimer(timeInterval: 0.01,
-                                                       target: self,
-                                                       selector: #selector(self.myTimer),
-                                                       userInfo: nil,
-                                                       repeats: true)
-                
-            }
-        }
-    }
-    
     
     /// Functions
     func myTimer() {
         if someNum != 0 {
             someBool = true
             stepIndex += 1
-            let bestPosition = support.findTheSmallestCount(position: someNum)
+            let bestPosition = gameLogic.findTheSmallestCount(position: someNum)
             
-            let a = support.addKnight(dict: myDict, position: bestPosition)
+            let a = gameLogic.addKnight(dict: boardSquareIndexesAndViews, position: bestPosition)
             
             if a != nil {
                 addSubviewToView(position: a!)
@@ -126,9 +124,6 @@ class ChessBoardViewController: UIViewController {
                 win()
                 return
             }
-            
-
-            
         }
     }
     
@@ -137,7 +132,7 @@ class ChessBoardViewController: UIViewController {
             "Try one more time", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Start again", style: UIAlertActionStyle.default, handler: { (action) in
             self.clear()
-            self.support.example = .Normal
+            self.gameLogic.example = .Normal
         }))
         self.present(alertController, animated: true, completion: nil)
     }
@@ -147,7 +142,7 @@ class ChessBoardViewController: UIViewController {
             "Try again", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Start again", style: UIAlertActionStyle.default, handler: { (action) in
             self.clear()
-            self.support.example = .Normal
+            self.gameLogic.example = .Normal
         }))
         self.present(alertController, animated: true, completion: nil)
     }
@@ -159,67 +154,25 @@ class ChessBoardViewController: UIViewController {
         let number: Int = position.1
         
         let toString = String(number)
-        view.addSubview(support.addKnightToPosition(view: view, number: toString))
-    }
-    
-    func start(sender: UIButton) {
-        clear()
-        number = true
-        support.example = .Normal
-        self.viewDidLoad()
+        view.addSubview(gameLogic.addKnightToPosition(view: view, number: toString))
     }
     
     func clear() {
-        myDict = [:]
-        arrayOf = [:]
-        support.clear()
+        boardSquareIndexesAndViews = [:]
+        gameLogic.clear()
         someBool = false
         self.view.subviews.forEach({ $0.removeFromSuperview() })
         someNum = 0
         number = true
         stepIndex = 0
         timer.invalidate()
-        self.viewDidLoad()
     }
     
-    func recognize(t: UITapGestureRecognizer) {
-        
-        if !someBool {
-            if let i = arrayOf.values.index(of: t) {
-                let key = arrayOf.keys[i]
-                someNum = key
-                self.viewDidLoad()
-            } else {
-                print("Error")
+    func boardSquareTapped(sender: UITapGestureRecognizer) {
+        if let view = sender.view {
+            if let knight = gameLogic.addKnight(dict: boardSquareIndexesAndViews, position: view.tag) {
+                addSubviewToView(position: (knight))
             }
         }
-    }
-    
-//    func winOrLose() {
-//        if support.previousPositions.count == 20 {
-//            support.example = .Win
-//            super.viewDidLoad()
-//        }
-//    }
-//    
-    
-    func demoMode() {
-        
-        if support.example == .Demo {
-            support.example = .Normal
-        } else {
-            support.example = .Demo
-        }
-        clear()
-        number = false
-        super.viewDidLoad()
-    }
-    
-    override var shouldAutorotate: Bool {
-        return false
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }
